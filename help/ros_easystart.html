@@ -1,0 +1,34 @@
+<h1>ROS easy start</h1>
+
+<p>I'll try to present ROS so you can do a few things with it, but you need to read and do some tutorials to understand it well.</p>
+
+<h2>Installation</h2>
+
+<p>First you need to install ROS to use this project.
+The version we use is groovy. Just follow the instructions on the <a href="wiki.ros.org/groovy/Installation">webpage</a> (tip: there is a link to download a virtual machine for virtualbox with ROS already installed)
+If you choose to install on your own OS (not with virtualbox), just follow the instructions, and install the desktop-full version of ROS.</p>
+
+<p>Now that ROS is installed, you have to tell your system you are using it: simply source the script provided by ROS to update you path and other environement variables:</p>
+
+<pre><code>source /opt/ros/hydro/setup.bash
+</code></pre>
+
+<h2>Create a workspace</h2>
+
+<p>All is <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace">here</a>.
+You will create a folder were we will download, write, and build code.
+Source the devel/setup.bash as indicated. You can put this command in your bashrc so it is launched automatically, otherwise you will have to do it in every console you want to use this workspace.</p>
+
+<p>Now you can add packages into your workspace under src (<code>~/catkin_ws/src</code> for instance). cd into this folder and</p>
+
+<ul>
+<li>create a package with <code>catkin_create_pkg</code> (see <a href="http://wiki.ros.org/ROS/Tutorials">tutorials</a>)</li>
+<li>download a package from source to build it or modify it (this one for instance: <code>git clone https://github.com/clems4ever/drone_project.git</code> )</li>
+</ul>
+
+<h2>Building</h2>
+
+<p>ROS Groovy comes with a tool called catkin which makes building tasks easy. It uses the CMakelist.txt of the package to know what to build.
+When you download a package, (re)build your workspace with <code>catkin_make</code> from the root of your workspace (<code>~/catkin_ws</code>).
+When adding source files, you need to modify the CMakelist.txt to take changes into acount.
+Binaries are put in another file, so don't worry if you don't see a build/ or bin/ file in your package after building. You can also forget about adding binaries to gitignore lists or so!</p>
