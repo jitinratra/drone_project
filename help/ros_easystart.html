@@ -4,6 +4,53 @@
 
 <h2>Installation</h2>
 
+<p>Here we'll install a very basic distribution of fuerte, and some dependencies we need:</p>
+
+<pre><code>apt-get install ros-fuerte-image-ros-comm ros-fuerte-image-transport-plugins ros-fuerte-image-pipeline
+</code></pre>
+
+<p>Create a workspace with </p>
+
+<pre><code>rosws init ~/fuerte_workspace /opt/ros/fuerte
+source ~/fuerte_workspace/setup.bash
+</code></pre>
+
+<p>Add the last line to your .bashrc with (for instance)</p>
+
+<pre><code>echo "source ~/fuerte_workspace/setup.bash" &gt;&gt; ~/.bashrc
+</code></pre>
+
+<p>You can create a sandbox for developping:</p>
+
+<pre><code>mkdir ~/fuerte_workspace/sandbox
+rosws set ~/fuerte_workspace/sandbox
+</code></pre>
+
+<p>cd in the fuerte workspace (with <code>roscd</code>) and do :</p>
+
+<pre><code>rosws set ardrone_autonomy --git https://github.com/AutonomyLab/ardrone_autonomy.git
+rosws update ardrone_autonomy
+</code></pre>
+
+<p>It will create a package for the driver <code>ardrone_autonomy</code> and link it with the git (first line) and update from the repository (second line).</p>
+
+<p>Now build it:</p>
+
+<pre><code>roscd ardrone_autonomy #cd to the package dir
+./build_sdk.sh  #build the sdk, this will install some dependencies and may ask for confirmation and sudo password
+rosmake ardrone_autonomy    #build the ros package
+</code></pre>
+
+<p>Now you can start ros : <code>roscore</code>
+and start the driver (with the drone connected by WiFi)</p>
+
+<pre><code>rosrun ardrone_autonomy ardrone_driver
+</code></pre>
+
+<h1>STOP HERE</h1>
+
+<h2>Installation</h2>
+
 <p>First you need to install ROS to use this project.
 The version we use is groovy. Just follow the instructions on the <a href="wiki.ros.org/groovy/Installation">webpage</a> (tip: there is a link to download a virtual machine for virtualbox with ROS already installed)
 If you choose to install on your own OS (not with virtualbox), just follow the instructions, and install the desktop-full version of ROS.</p>

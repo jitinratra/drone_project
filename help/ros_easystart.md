@@ -3,6 +3,49 @@ ROS easy start
 
 I'll try to present ROS so you can do a few things with it, but you need to read and do some tutorials to understand it well.
 
+Installation
+----------
+Here we'll install a very basic distribution of fuerte, and some dependencies we need:
+
+	apt-get install ros-fuerte-image-ros-comm ros-fuerte-image-transport-plugins ros-fuerte-image-pipeline
+
+Create a workspace with 
+
+	rosws init ~/fuerte_workspace /opt/ros/fuerte
+	source ~/fuerte_workspace/setup.bash
+
+Add the last line to your .bashrc with (for instance)
+
+	echo "source ~/fuerte_workspace/setup.bash" >> ~/.bashrc
+
+You can create a sandbox for developping:
+
+	mkdir ~/fuerte_workspace/sandbox
+	rosws set ~/fuerte_workspace/sandbox
+
+
+cd in the fuerte workspace (with `roscd`) and do :
+
+	rosws set ardrone_autonomy --git https://github.com/AutonomyLab/ardrone_autonomy.git
+	rosws update ardrone_autonomy
+
+It will create a package for the driver `ardrone_autonomy` and link it with the git (first line) and update from the repository (second line).
+
+Now build it:
+
+	roscd ardrone_autonomy #cd to the package dir
+	./build_sdk.sh	#build the sdk, this will install some dependencies and may ask for confirmation and sudo password
+	rosmake ardrone_autonomy	#build the ros package
+
+Now you can start ros : `roscore`
+and start the driver (with the drone connected by WiFi)
+
+	rosrun ardrone_autonomy ardrone_driver
+
+
+STOP HERE
+========
+
 
 Installation
 -----------
