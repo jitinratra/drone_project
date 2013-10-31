@@ -9,23 +9,38 @@
 <pre><code>apt-get install ros-fuerte-ros-comm ros-fuerte-image-transport-plugins ros-fuerte-image-pipeline
 </code></pre>
 
-<p>Create a workspace with:</p>
+<p>Then source the setup file of ROS:</p>
 
-<pre><code>rosws init ~/fuerte_workspace /opt/ros/fuerte
-source ~/fuerte_workspace/setup.bash
+<pre><code>source /opt/ros/fuerte/setup.bash
 </code></pre>
 
-<p>Your workspace is were you will download, create and build code for ROS. To use it in a terminal, you need to source the <code>setup.bash</code> file of the workspace.
+<p>You can add this line to your bashrc, otherwise you will need to do it in every terminal where you want to use ROS.</p>
+
+<p>You also can install other distributions of fuerte, with more tools, like ros-fuerte-desktop or ros-fuerte-desktop-full (around 1GB I think)</p>
+
+<h2>Create your workspace</h2>
+
+<p>Your workspace is were you will download, create and build code for ROS.</p>
+
+<p>Create a workspace with:</p>
+
+<pre><code>rosws init ~/fuerte_workspace /opt/ros/fuerte #create and init
+source ~/fuerte_workspace/setup.bash #update your environement variables and some stuff to use your workspace
+</code></pre>
+
+<p>To use it in a terminal, you need to source the <code>setup.bash</code> file of the workspace.
 It's more convenient to add it to your bashrc. You can do it this way:</p>
 
 <pre><code>echo "source ~/fuerte_workspace/setup.bash" &gt;&gt; ~/.bashrc
 </code></pre>
 
-<p>You <em>can</em> create a sandbox for developping (the project will <em>not</em> be there, we will create an other packag):</p>
+<p>You <em>can</em> create a sandbox for developping (the project will <strong>not</strong> be there, we will create an other packag):</p>
 
 <pre><code>mkdir ~/fuerte_workspace/sandbox
 rosws set ~/fuerte_workspace/sandbox
 </code></pre>
+
+<h2>Download the driver for the AR.Drone</h2>
 
 <p>cd in the fuerte workspace (with <code>roscd</code> for instance, no args) and do :</p>
 
@@ -45,11 +60,18 @@ roscd ardrone_autonomy
 rosmake ardrone_autonomy
 </code></pre>
 
+<h2>And takeoff!</h2>
+
 <p>Now you can start ros : <code>roscore</code>
 and start the driver (with the drone connected by WiFi)</p>
 
 <pre><code>rosrun ardrone_autonomy ardrone_driver
 </code></pre>
+
+<p>You run <code>rostopic pub -1 /ardrone/takeoff std_msgs/Empty</code> with the drone in a free space.
+Land with <code>rostopic pub -1 /ardrone/land std_msgs/Empty</code>.</p>
+
+<p>Go to the <a href="https://github.com/AutonomyLab/ardrone_autonomy">github of ardrone_autonomy</a> to find info about the <a href="https://github.com/AutonomyLab/ardrone_autonomy#reading-from-ar-drone">data you can access</a> and the <a href="https://github.com/AutonomyLab/ardrone_autonomy#sending-commands-to-ar-drone">commands you can send to it</a></p>
 
 <h1>STOP HERE</h1>
 

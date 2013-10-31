@@ -9,20 +9,36 @@ Here we'll install a very basic distribution of fuerte, and some dependencies we
 
 	apt-get install ros-fuerte-ros-comm ros-fuerte-image-transport-plugins ros-fuerte-image-pipeline
 
+Then source the setup file of ROS:
+
+	source /opt/ros/fuerte/setup.bash
+
+You can add this line to your bashrc, otherwise you will need to do it in every terminal where you want to use ROS.
+
+You also can install other distributions of fuerte, with more tools, like ros-fuerte-desktop or ros-fuerte-desktop-full (around 1GB I think)
+
+Create your workspace
+-------------------
+
+Your workspace is were you will download, create and build code for ROS.
+
 Create a workspace with:
 
-	rosws init ~/fuerte_workspace /opt/ros/fuerte
-	source ~/fuerte_workspace/setup.bash
+	rosws init ~/fuerte_workspace /opt/ros/fuerte #create and init
+	source ~/fuerte_workspace/setup.bash #update your environement variables and some stuff to use your workspace
 
-Your workspace is were you will download, create and build code for ROS. To use it in a terminal, you need to source the `setup.bash` file of the workspace.
+To use it in a terminal, you need to source the `setup.bash` file of the workspace.
 It's more convenient to add it to your bashrc. You can do it this way:
 
 	echo "source ~/fuerte_workspace/setup.bash" >> ~/.bashrc
 
-You _can_ create a sandbox for developping (the project will _not_ be there, we will create an other packag):
+You _can_ create a sandbox for developping (the project will __not__ be there, we will create an other packag):
 
 	mkdir ~/fuerte_workspace/sandbox
 	rosws set ~/fuerte_workspace/sandbox
+
+Download the driver for the AR.Drone
+-----------------------------------
 
 cd in the fuerte workspace (with `roscd` for instance, no args) and do :
 
@@ -40,10 +56,19 @@ Now build it:
 	#build the ros package
 	rosmake ardrone_autonomy
 
+And takeoff!
+-----------
+
 Now you can start ros : `roscore`
 and start the driver (with the drone connected by WiFi)
 
 	rosrun ardrone_autonomy ardrone_driver
+
+
+You run `rostopic pub -1 /ardrone/takeoff std_msgs/Empty` with the drone in a free space.
+Land with `rostopic pub -1 /ardrone/land std_msgs/Empty`.
+
+Go to the [github of ardrone_autonomy](https://github.com/AutonomyLab/ardrone_autonomy) to find info about the [data you can access](https://github.com/AutonomyLab/ardrone_autonomy#reading-from-ar-drone) and the [commands you can send to it](https://github.com/AutonomyLab/ardrone_autonomy#sending-commands-to-ar-drone)
 
 
 STOP HERE
