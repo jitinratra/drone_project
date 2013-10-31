@@ -71,6 +71,16 @@ Close the driver with ctrl C.
 
 Go to the [github of ardrone_autonomy](https://github.com/AutonomyLab/ardrone_autonomy) to find info about the [data you can access](https://github.com/AutonomyLab/ardrone_autonomy#reading-from-ar-drone) and the [commands you can send to it](https://github.com/AutonomyLab/ardrone_autonomy#sending-commands-to-ar-drone)
 
+Get our project
+-----------
+
+cd to sandbox, as create before. Here we will have some hacks, be carefull.
+First, create a package with `roscreate-pkg drone_project`
+You normally can find it with `rospack find drone_project` and cd to with `roscd drone_project`.
+Now, remove the folder and its contents with `rf`.
+And now, just clone the git repo. Hopefully it will work.
+Warning: the names must correspond, between the package created with roscreate-pkg and the git.
+
 
 STOP HERE
 ========
