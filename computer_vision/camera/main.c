@@ -11,7 +11,7 @@ void readme();
 /** @function main */
 int main( int argc, char** argv )
 {
-  VideoCapture cap(1);
+  VideoCapture cap(0);
   Mat camera_frame;
 
 
