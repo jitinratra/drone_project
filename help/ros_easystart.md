@@ -67,6 +67,7 @@ and start the driver (with the drone connected by WiFi)
 
 You run `rostopic pub -1 /ardrone/takeoff std_msgs/Empty` with the drone in a free space.
 Land with `rostopic pub -1 /ardrone/land std_msgs/Empty`.
+Close the driver with ctrl C.
 
 Go to the [github of ardrone_autonomy](https://github.com/AutonomyLab/ardrone_autonomy) to find info about the [data you can access](https://github.com/AutonomyLab/ardrone_autonomy#reading-from-ar-drone) and the [commands you can send to it](https://github.com/AutonomyLab/ardrone_autonomy#sending-commands-to-ar-drone)
 
