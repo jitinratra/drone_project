@@ -7,24 +7,24 @@ Installation
 ----------
 Here we'll install a very basic distribution of fuerte, and some dependencies we need:
 
-	apt-get install ros-fuerte-image-ros-comm ros-fuerte-image-transport-plugins ros-fuerte-image-pipeline
+	apt-get install ros-fuerte-ros-comm ros-fuerte-image-transport-plugins ros-fuerte-image-pipeline
 
-Create a workspace with 
+Create a workspace with:
 
 	rosws init ~/fuerte_workspace /opt/ros/fuerte
 	source ~/fuerte_workspace/setup.bash
 
-Add the last line to your .bashrc with (for instance)
+Your workspace is were you will download, create and build code for ROS. To use it in a terminal, you need to source the `setup.bash` file of the workspace.
+It's more convenient to add it to your bashrc. You can do it this way:
 
 	echo "source ~/fuerte_workspace/setup.bash" >> ~/.bashrc
 
-You can create a sandbox for developping:
+You _can_ create a sandbox for developping (the project will _not_ be there, we will create an other packag):
 
 	mkdir ~/fuerte_workspace/sandbox
 	rosws set ~/fuerte_workspace/sandbox
 
-
-cd in the fuerte workspace (with `roscd`) and do :
+cd in the fuerte workspace (with `roscd` for instance, no args) and do :
 
 	rosws set ardrone_autonomy --git https://github.com/AutonomyLab/ardrone_autonomy.git
 	rosws update ardrone_autonomy
@@ -33,9 +33,12 @@ It will create a package for the driver `ardrone_autonomy` and link it with the 
 
 Now build it:
 
-	roscd ardrone_autonomy #cd to the package dir
-	./build_sdk.sh	#build the sdk, this will install some dependencies and may ask for confirmation and sudo password
-	rosmake ardrone_autonomy	#build the ros package
+	#cd to the package dir (you'll need to re-source the setup.bash of your workspace to perform this command)
+	roscd ardrone_autonomy 
+	#build the sdk, this will install some dependencies and may ask for confirmation and sudo password
+	./build_sdk.sh
+	#build the ros package
+	rosmake ardrone_autonomy
 
 Now you can start ros : `roscore`
 and start the driver (with the drone connected by WiFi)

@@ -6,27 +6,28 @@
 
 <p>Here we'll install a very basic distribution of fuerte, and some dependencies we need:</p>
 
-<pre><code>apt-get install ros-fuerte-image-ros-comm ros-fuerte-image-transport-plugins ros-fuerte-image-pipeline
+<pre><code>apt-get install ros-fuerte-ros-comm ros-fuerte-image-transport-plugins ros-fuerte-image-pipeline
 </code></pre>
 
-<p>Create a workspace with </p>
+<p>Create a workspace with:</p>
 
 <pre><code>rosws init ~/fuerte_workspace /opt/ros/fuerte
 source ~/fuerte_workspace/setup.bash
 </code></pre>
 
-<p>Add the last line to your .bashrc with (for instance)</p>
+<p>Your workspace is were you will download, create and build code for ROS. To use it in a terminal, you need to source the <code>setup.bash</code> file of the workspace.
+It's more convenient to add it to your bashrc. You can do it this way:</p>
 
 <pre><code>echo "source ~/fuerte_workspace/setup.bash" &gt;&gt; ~/.bashrc
 </code></pre>
 
-<p>You can create a sandbox for developping:</p>
+<p>You <em>can</em> create a sandbox for developping (the project will <em>not</em> be there, we will create an other packag):</p>
 
 <pre><code>mkdir ~/fuerte_workspace/sandbox
 rosws set ~/fuerte_workspace/sandbox
 </code></pre>
 
-<p>cd in the fuerte workspace (with <code>roscd</code>) and do :</p>
+<p>cd in the fuerte workspace (with <code>roscd</code> for instance, no args) and do :</p>
 
 <pre><code>rosws set ardrone_autonomy --git https://github.com/AutonomyLab/ardrone_autonomy.git
 rosws update ardrone_autonomy
@@ -36,9 +37,12 @@ rosws update ardrone_autonomy
 
 <p>Now build it:</p>
 
-<pre><code>roscd ardrone_autonomy #cd to the package dir
-./build_sdk.sh  #build the sdk, this will install some dependencies and may ask for confirmation and sudo password
-rosmake ardrone_autonomy    #build the ros package
+<pre><code>#cd to the package dir (you'll need to re-source the setup.bash of your workspace to perform this command)
+roscd ardrone_autonomy 
+#build the sdk, this will install some dependencies and may ask for confirmation and sudo password
+./build_sdk.sh
+#build the ros package
+rosmake ardrone_autonomy
 </code></pre>
 
 <p>Now you can start ros : <code>roscore</code>
