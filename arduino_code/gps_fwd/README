@@ -1,0 +1,12 @@
+
+This arduino code reads GPS output and transmit it to
+it's serial/USB communication
+
+Connect gps to following pins
+
+GPS       |    arduino
+-----------------------
+VCC3V3    |  3.3V
+GND       |  GND
+TXD       |  2
+RXD       |  7
