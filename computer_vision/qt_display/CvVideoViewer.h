@@ -16,7 +16,7 @@ class CvVideoViewer : public QLabel
 public:
     explicit CvVideoViewer(QWidget *parent = 0) : QLabel(parent), m_capture(0) 
     {
-        m_timer.setInterval(100);
+	m_timer.setInterval(100);
 	connect(&m_timer, SIGNAL(timeout()), this, SLOT(refresh()));
 	m_timer.start();
     }
