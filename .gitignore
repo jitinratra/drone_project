@@ -17,3 +17,6 @@ bin/*
 *.lai
 *.la
 *.a
+
+# Qt generated files
+moc_*
