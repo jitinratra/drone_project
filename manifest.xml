@@ -1,0 +1,16 @@
+<package>
+  <description brief="drone_project">
+
+     drone_project
+
+  </description>
+  <author>viki</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/drone_project</url>
+
+	<depend package="roscpp"/>
+
+</package>
+
+

@@ -27,4 +27,8 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #rosbuild_add_boost_directories()
 #rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(example examples/example.cpp)
+
+#the gps driver test
+rosbuild_add_executable(gps_remote_driver src/gps_remote_driver.cpp)
+
 #target_link_libraries(example ${PROJECT_NAME})
