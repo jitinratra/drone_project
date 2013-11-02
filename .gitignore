@@ -1,3 +1,9 @@
+# directories ignore (ROS)
+build
+build/*
+bin
+bin/*
+# c++ standard ignore
 # Compiled Object files
 *.slo
 *.lo
