@@ -1,1 +1,8 @@
 Here are some codes for the onboard arduino chip, adding some features to the drone
+
+I use the command line tool "ino" (http://inotool.org) for building. but the code can be compiled
+using the arduino IDE. But arduino IDE needs a different directories organisation of the project,
+so you will need to copy/link the source code to an other (local) folder where you will be abble
+to code/build/upload the code.
+
+readme author : Jules

@@ -6,7 +6,12 @@ Connect gps to following pins
 
 GPS       |    arduino
 -----------------------
-VCC3V3    |  3.3V
-GND       |  GND
-TXD       |  2
+3DF       |  unplugged
 RXD       |  7
+TXD       |  2
+1PPS      |  unplugged
+GND       |  GND
+VCC3V3    |  3.3V
+
+(3DF is a square signal of period 2 seconds (same as the blinking LED LD1))
+(1PPS is 1 pulse per second)
