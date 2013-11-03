@@ -132,7 +132,7 @@ char checksum(char *s) {
 
 
 void setup(){
-	Serial.begin(115200);// ouvre le port série et règle le debit à 9600 bps
+	Serial.begin(9600);// ouvre le port série et règle le debit à 9600 bps
 	gps.begin(9600);	// pareil pour les ports digitaux
 	pinMode(SoftrxPin, INPUT);
 	pinMode(ECHOPIN1, INPUT);
