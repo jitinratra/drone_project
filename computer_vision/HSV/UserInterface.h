@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QTimer>
+#include <QSlider>
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/opencv.hpp>
@@ -32,7 +33,11 @@ private:
 	QTimer m_timer;
 	CvImageViewer *p_camera_viewer;
 	CvImageViewer *p_filtered_viewer;
+	CvImageViewer *p_eroded_viewer;
 	HSVWidget *hsv;
+
+	QSlider *p_erodeSlider;
+	QSlider *p_dilateSlider;
 };
 
 #endif

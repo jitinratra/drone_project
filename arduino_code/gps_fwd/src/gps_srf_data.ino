@@ -1,5 +1,8 @@
 #include <SoftwareSerial.h>
 
+#define SEND_BYTE_TO_BYTE
+#define CONTROL_CHECKSUM
+
 // GPS PINS
 #define SoftrxPin 2
 #define SofttxPin 7
@@ -19,6 +22,8 @@ int h = 0;
 char inBuffer[300] = "";
 char GPS_RMC[100]="";
 char GPS_GGA[100]="";
+
+char *gga = "GGA";
 
 
 
@@ -97,6 +102,34 @@ float calculateDistance(int pinEcho, int pinTrig){
 	return distance/58.0;                  // Calculate distance from time of pulse                    
 }
 
+char chartoval(char c){
+	if((c >=48) && (c<=57)){
+		//it's a digit (0-9)
+		return c-48;
+	}else if((c>=65)&&(c<=70)){
+		//it's a letter A-F
+		return c-65+10;
+	}else{
+		return -1;
+	}
+}
+
+char checksum(char *s) {
+	char c = 0;
+
+	s++;
+	while(*s!='*')
+		c ^= *s++;
+
+	if(c!=chartoval(*(++s))*16+chartoval(*(++s))){
+		c=0;
+	}else{
+		c=1;
+	}
+
+	return c;
+}
+
 
 void setup(){
 	Serial.begin(9600);// ouvre le port série et règle le debit à 9600 bps
@@ -106,10 +139,14 @@ void setup(){
 	pinMode(TRIGPIN1, OUTPUT);
 	pinMode(ECHOPIN2, INPUT);
 	pinMode(TRIGPIN2, OUTPUT);
-	Serial.println("coucou\n");
 }
 int cpt=0;
+char decompteOk;
 void loop(){
+	char str_buff[256];
+	char buff;
+	static int i=0;
+
 	/*
 		 if(cpt%4==3 ){
 		 Serial.println("gprmc...");
@@ -120,7 +157,31 @@ void loop(){
 		 }
 		 */
 	if(gps.available()!=0){
-		Serial.write(gps.read());
+#ifdef SEND_BYTE_TO_BYTE
+		str_buff[i]=gps.read();
+		if((str_buff[i++]=='\n')||(i>=255)){
+			str_buff[i]=0;
+			decompteOk=3;
+			for(i=0;i<3;i++){
+				if(str_buff[i+3]==gga[i]){
+					decompteOk--;
+				}
+			}
+
+			if(decompteOk<=0){
+#ifdef CONTROL_CHECKSUM
+				if(checksum(str_buff)==0){
+					Serial.println("ERRORCHECKSUM");
+				}else
+#endif
+				Serial.println(str_buff);
+			}
+			i=0;
+		}
+#else
+		buff=gps.read();
+		Serial.write(buff);
+#endif
 	}
 
 	//Serial.print("$SRFR,");
