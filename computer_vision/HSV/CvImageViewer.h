@@ -46,7 +46,7 @@ protected:
     void paintEvent(QPaintEvent* /*event*/) {
         // Display the image
         QPainter painter(this);
-        painter.drawImage(QPoint(20,20), _qimage);
+        painter.drawImage(QPoint(0,0), _qimage);
         painter.end();
     }
     
