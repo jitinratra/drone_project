@@ -30,6 +30,7 @@ rosbuild_add_boost_directories()
 #the gps driver test
 rosbuild_add_executable(gps_remote_driver src/gps_remote_driver.cpp src/gps_conv.cpp)
 
+rosbuild_add_executable(test_gps_connection_lib src/test_gps_connection_lib.cpp src/gps_conv.cpp src/GpsConnection.cpp)
 
 #target_link_libraries(example ${PROJECT_NAME})
 
