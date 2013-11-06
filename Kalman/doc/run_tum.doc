@@ -1,4 +1,4 @@
-1 - Lancer roscore en root
+﻿1 - Lancer roscore en root
 	=> si sa merde source /opt/ros/fuerte/setup.bash en root
 
 2 - Lancer ardrone_autonomy ardrone_driver et attendre que tout soit ok
@@ -8,6 +8,6 @@
 
 4. rosrun tum_ardrone drone_stateestimation
 
-5. run gui node
+5. rosrun tum_ardrone drone_gui 
 
 
