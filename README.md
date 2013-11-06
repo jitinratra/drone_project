@@ -18,58 +18,61 @@ You can take a look to some [tutorials](http://wiki.ros.org/ROS/Tutorials) to un
 It's the driver to interface the ARDrone with ROS.
 Info is [here](https://github.com/AutonomyLab/ardrone_autonomy#ardrone_autonomy--a-ros-driver-for-ardrone-10--20)
 
-<<<<<<< HEAD
-
 #### Install tum_ardrone
 
-# cd into ros root dir
-roscd
 
-# clone repository
-git clone https://github.com/tum-vision/tum_ardrone.git
+	# cd into ros root dir
+	roscd
 
-# add to ros path (if required)
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:`pwd`/tum_ardrone
+	# clone repository
+	git clone https://github.com/tum-vision/tum_ardrone.git
+	
+	# add to ros path (if required)
+	export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:`pwd`/tum_ardrone
+	
+	# download lib
+	sudo apt-get install libblas-dev
+	sudo apt-get install liblapack-dev
+	
+	#In the file Navata.msg in the folder ardrone_autonomy/msg Add this lines : 
+	#motor commands (unit 0 to 255)
+	uint8 motor1
+	uint8 motor2
+	uint8 motor3
+	uint8 motor4
 
-# download lib
-sudo apt-get install libblas-dev
-sudo apt-get install liblapack-dev
-
-#In the file Navata.msg in the folder ardrone_autonomy/msg
-Add this lines : 
-#motor commands (unit 0 to 255)
-uint8 motor1
-uint8 motor2
-uint8 motor3
-uint8 motor4
-
-# build package (may take up to 10 minutes)
-rosmake tum_ardrone
+	# build package (may take up to 10 minutes)
+	rosmake tum_ardrone
 
 
 #### run tum_ardrone
 
-# run driver
-rosrun ardrone_autonomy ardrone_driver
 
-# if unknown command
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:`pwd`/tum_ardrone
+	# run driver
+	rosrun ardrone_autonomy ardrone_driver
+  
+	# if unknown command
+	export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:`pwd`/tum_ardrone
+	
+	# run stateestimation node
+	rosrun tum_ardrone drone_stateestimation
+  
+	# run autopilot node
+	rosrun tum_ardrone drone_autopilot
+  
+	# run gui node
+	rosrun tum_ardrone drone_gui
 
-# run stateestimation node
-rosrun tum_ardrone drone_stateestimation
-
-# run autopilot node
-rosrun tum_ardrone drone_autopilot
-
-# run gui node
-rosrun tum_ardrone drone_gui
 
 
-
-
-=======
 #### Other mandatory dependencies
 
+- `gpsd` (ubuntu repo)
 - `gpsd_client` : http://wiki.ros.org/gpsd_client
+
+		$ cd ~/fuerte_workspace/sandbox
+		$ git clone -b fuerte_released https://github.com/ktossell/gps_umd.git
+		$ rosstack profile && rospack profile
+		$ rosmake gps_umd
+
 - `ar_track_alvar` : http://wiki.ros.org/ar_track_alvar
->>>>>>> c8ea53eaceaa34b44b6148030c1aa10fb316c5d6
