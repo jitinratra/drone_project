@@ -76,3 +76,5 @@ Info is [here](https://github.com/AutonomyLab/ardrone_autonomy#ardrone_autonomy-
 		$ rosmake gps_umd
 
 - `ar_track_alvar` : http://wiki.ros.org/ar_track_alvar
+
+   bosch_driver  : apt-get install ros-fuerte-bosch-driver
