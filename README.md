@@ -18,6 +18,7 @@ You can take a look to some [tutorials](http://wiki.ros.org/ROS/Tutorials) to un
 It's the driver to interface the ARDrone with ROS.
 Info is [here](https://github.com/AutonomyLab/ardrone_autonomy#ardrone_autonomy--a-ros-driver-for-ardrone-10--20)
 
+<<<<<<< HEAD
 
 #### Install tum_ardrone
 
@@ -66,3 +67,9 @@ rosrun tum_ardrone drone_gui
 
 
 
+=======
+#### Other mandatory dependencies
+
+- `gpsd_client` : http://wiki.ros.org/gpsd_client
+- `ar_track_alvar` : http://wiki.ros.org/ar_track_alvar
+>>>>>>> c8ea53eaceaa34b44b6148030c1aa10fb316c5d6
