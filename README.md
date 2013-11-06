@@ -17,3 +17,7 @@ You can take a look to some [tutorials](http://wiki.ros.org/ROS/Tutorials) to un
 It's the driver to interface the ARDrone with ROS.
 Info is [here](https://github.com/AutonomyLab/ardrone_autonomy#ardrone_autonomy--a-ros-driver-for-ardrone-10--20)
 
+#### Other mandatory dependencies
+
+- `gpsd_client` : http://wiki.ros.org/gpsd_client
+- `ar_track_alvar` : http://wiki.ros.org/ar_track_alvar
