@@ -21,18 +21,16 @@ Info is [here](https://github.com/AutonomyLab/ardrone_autonomy#ardrone_autonomy-
 #### Install tum_ardrone
 
 
+	# install dependencies
+	sudo apt-get install libblas-dev
+	sudo apt-get install liblapack-dev
+
 	# cd into ros root dir
 	roscd
 
-	# clone repository
-	git clone https://github.com/tum-vision/tum_ardrone.git
-	
-	# add to ros path (if required)
-	export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:`pwd`/tum_ardrone
-	
-	# download lib
-	sudo apt-get install libblas-dev
-	sudo apt-get install liblapack-dev
+	# install package from git
+	rosws set tum_ardrone --git https://github.com/tum-vision/tum_ardrone.git
+	rosws update tum_ardrone
 	
 	#In the file Navata.msg in the folder ardrone_autonomy/msg Add this lines : 
 	#motor commands (unit 0 to 255)
@@ -51,8 +49,10 @@ Info is [here](https://github.com/AutonomyLab/ardrone_autonomy#ardrone_autonomy-
 	# run driver
 	rosrun ardrone_autonomy ardrone_driver
   
-	# if unknown command
-	export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:`pwd`/tum_ardrone
+	# if package ardrone_autonomy is installed but unknown command
+	# to do only the first time!
+	roscd
+	rosws set ardrone_autonomy/
 	
 	# run stateestimation node
 	rosrun tum_ardrone drone_stateestimation
