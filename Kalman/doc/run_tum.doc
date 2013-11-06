@@ -1,0 +1,13 @@
+1 - Lancer roscore en root
+	=> si sa merde source /opt/ros/fuerte/setup.bash en root
+
+2 - Lancer ardrone_autonomy ardrone_driver et attendre que tout soit ok
+
+3 - export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:`pwd`/tum_ardrone
+	puis rosrun ros_tum drone_autopilot
+
+4. rosrun tum_ardrone drone_stateestimation
+
+5. run gui node
+
+

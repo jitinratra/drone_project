@@ -1,0 +1,42 @@
+	Au cas ou sa plante pdt le rosmake sur le 
+		27ème package
+
+1- 
+sudo apt-get install libblas-dev
+sudo apt-get install liblapack-dev
+
+Pour l'erreur suivante : 
+make[4]: *** [../bin/drone_stateestimation] Error 1
+make[4]: Leaving directory `/home/alfred/fuerte_workspace/tum_ardrone/build'
+make[3]: *** [CMakeFiles/drone_stateestimation.dir/all] Error 2
+make[3]: Leaving directory `/home/alfred/fuerte_workspace/tum_ardrone/build'
+make[2]: *** [all] Error 2
+make[2]: Leaving directory `/home/alfred/fuerte_workspace/tum_ardrone/build'
+make[1]: *** [all] Error 2
+make[1]: Leaving directory `/home/alfred/fuerte_workspace/tum_ardrone'
+
+
+2- 
+In the file Navata.msg in the folder ardrone_autonomy/msg
+Add this lines : 
+#motor commands (unit 0 to 255)
+uint8 motor1
+uint8 motor2
+uint8 motor3
+uint8 motor4
+
+pour l'erreur suivante : 
+ 77%] Built target drone_stateestimation
+/opt/ros/groovy/tum_ardrone/src/UINode/RosThread.cpp: In member function ‘void RosThread::navdataCb(ardrone_autonomy::NavdataConstPtr)’:
+/opt/ros/groovy/tum_ardrone/src/UINode/RosThread.cpp:88:24: error: ‘const struct ardrone_autonomy::Navdata_std::allocator<void >’ has no member named ‘motor1’
+/opt/ros/groovy/tum_ardrone/src/UINode/RosThread.cpp:89:24: error: ‘const struct ardrone_autonomy::Navdata_std::allocator<void >’ has no member named ‘motor2’
+/opt/ros/groovy/tum_ardrone/src/UINode/RosThread.cpp:90:24: error: ‘const struct ardrone_autonomy::Navdata_std::allocator<void >’ has no member named ‘motor3’
+/opt/ros/groovy/tum_ardrone/src/UINode/RosThread.cpp:91:24: error: ‘const struct ardrone_autonomy::Navdata_std::allocator<void >’ has no member named ‘motor4’
+make[4]: *** [CMakeFiles/drone_gui.dir/src/UINode/RosThread.cpp.o] Error 1
+make[4]: Leaving directory /opt/ros/groovy/tum_ardrone/build'
+make[3]: *** [CMakeFiles/drone_gui.dir/all] Error 2
+make[3]: Leaving directory/opt/ros/groovy/tum_ardrone/build'
+make[2]: *** [all] Error 2
+make[2]: Leaving directory /opt/ros/groovy/tum_ardrone/build'
+make[1]: *** [all] Error 2
+make[1]: Leaving directory/opt/ros/groovy/tum_ardrone'
