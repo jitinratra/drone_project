@@ -65,16 +65,20 @@ Info is [here](https://github.com/AutonomyLab/ardrone_autonomy#ardrone_autonomy-
 
 
 
-#### Other mandatory dependencies
+#### Other mandatory dependencies
 
-- `gpsd` (ubuntu repo)
-- `gpsd_client` : http://wiki.ros.org/gpsd_client
+- `gpsd` (from standard repos: `apt-get install gpsd`)
+- `gpsd_client` : <http://wiki.ros.org/gpsd_client>
 
-		$ cd ~/fuerte_workspace/sandbox
-		$ git clone -b fuerte_released https://github.com/ktossell/gps_umd.git
-		$ rosstack profile && rospack profile
-		$ rosmake gps_umd
+	First install libgps-dev, which is a dependency of this package (`apt-get install libgps-dev`). Then do the following:
 
-- `ar_track_alvar` : http://wiki.ros.org/ar_track_alvar
+		cd ~/fuerte_workspace/sandbox #or wherever you want in your workspace
+		#choose the corresponding branch, here it's the fuerte version of the package
+		git clone -b fuerte_released https://github.com/ktossell/gps_umd.git
+		rosstack profile && rospack profile
+		rosws set gps_umd
+		rosmake gps_umd
 
-   bosch_driver  : apt-get install ros-fuerte-bosch-driver
+- `ar_track_alvar` : <http://wiki.ros.org/ar_track_alvar>
+
+-	`bosch_driver`  : `apt-get install ros-fuerte-bosch-driver`

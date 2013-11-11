@@ -8,8 +8,9 @@
 
 <h4>Install ROS</h4>
 
-<p>First you need to install ROS to use this project.
-The version we use is groovy. Just follow the instructions on the <a href="wiki.ros.org/groovy/Installation">webpage</a> (tip: there is a link to download a virtual machine for virtualbox with ROS already installed)
+<p>First you need to install ROS to use this SUMMARY
+project.
+The version we use is groovy. Just follow the instructions on the <a href="http://wiki.ros.org/groovy/Installation">webpage</a> (tip: there is a link to download a virtual machine for virtualbox with ROS already installed)
 If you choose to install on your own OS (not with virtualbox), just follow the instructions, and install the desktop-full version of ROS.</p>
 
 <p>You can take a look to some <a href="http://wiki.ros.org/ROS/Tutorials">tutorials</a> to understand what is ROS and what it's made of.</p>
@@ -18,3 +19,66 @@ If you choose to install on your own OS (not with virtualbox), just follow the i
 
 <p>It's the driver to interface the ARDrone with ROS.
 Info is <a href="https://github.com/AutonomyLab/ardrone_autonomy#ardrone_autonomy--a-ros-driver-for-ardrone-10--20">here</a></p>
+
+<h4>Install tum_ardrone</h4>
+
+<pre><code># install dependencies
+sudo apt-get install libblas-dev
+sudo apt-get install liblapack-dev
+
+# cd into ros root dir
+roscd
+
+# install package from git
+rosws set tum_ardrone --git https://github.com/tum-vision/tum_ardrone.git
+rosws update tum_ardrone
+
+#In the file Navata.msg in the folder ardrone_autonomy/msg Add this lines : 
+#motor commands (unit 0 to 255)
+uint8 motor1
+uint8 motor2
+uint8 motor3
+uint8 motor4
+
+# build package (may take up to 10 minutes)
+rosmake tum_ardrone
+</code></pre>
+
+<h4>run tum_ardrone</h4>
+
+<pre><code># run driver
+rosrun ardrone_autonomy ardrone_driver
+
+# if package ardrone_autonomy is installed but unknown command
+# to do only the first time!
+roscd
+rosws set ardrone_autonomy/
+
+# run stateestimation node
+rosrun tum_ardrone drone_stateestimation
+
+# run autopilot node
+rosrun tum_ardrone drone_autopilot
+
+# run gui node
+rosrun tum_ardrone drone_gui
+</code></pre>
+
+<h4>Other mandatory dependencies</h4>
+
+<ul>
+<li><code>gpsd</code> (from standard repos: <code>apt-get install gpsd</code>)</li>
+<li><p><code>gpsd_client</code> : <a href="http://wiki.ros.org/gpsd_client">http://wiki.ros.org/gpsd_client</a></p>
+
+<p>First install libgps-dev, which is a dependency of this package (<code>apt-get install libgps-dev</code>). Then do the following:</p>
+
+<pre><code>cd ~/fuerte_workspace/sandbox #or wherever you want in your workspace
+#choose the corresponding branch, here it's the fuerte version of the package
+git clone -b fuerte_released https://github.com/ktossell/gps_umd.git
+rosstack profile &amp;&amp; rospack profile
+rosws set gps_umd
+rosmake gps_umd
+</code></pre></li>
+<li><p><code>ar_track_alvar</code> : <a href="http://wiki.ros.org/ar_track_alvar">http://wiki.ros.org/ar_track_alvar</a></p></li>
+<li><p><code>bosch_driver</code>  : <code>apt-get install ros-fuerte-bosch-driver</code></p></li>
+</ul>

@@ -1,0 +1,38 @@
+<h1>GPS How To</h1>
+
+<p>Here we will present how to use your GPS. First, be sure to have installed all required packages (see main README file).</p>
+
+<h2>On-board GPS</h2>
+
+<p>The GPS chip is not a default component of the drone. We use a GPS chip combined with an Arduino to communicate with the drone's system.</p>
+
+<h2>Communication</h2>
+
+<p>The communication is made via Wifi, with TCP.</p>
+
+<pre><code>    cat /dev/ttyACMO | netcat -lk &lt;port&gt;
+</code></pre>
+
+<p>TODO detail this 2 sections</p>
+
+<h2>Reception</h2>
+
+<p><code>gpsd</code> handles TCP communication for it's devices. Simply launch gpsd with the drone's ip and port corresponding to the gps:</p>
+
+<pre><code>    gpsd tcp://192.168.0.1:&lt;port&gt; -b
+</code></pre>
+
+<p>TODO : not sure for the drone's address</p>
+
+<p>Nota: <code>-b</code> options forbids gpsd to send data to the gps, as our solution for gps (arduino + gps chip) wasn't made to support it.</p>
+
+<h2>ROS <code>gpsd_client</code></h2>
+
+<pre><code>    rosrun gpsd_client gpsd_client _use_gps_time:=false
+</code></pre>
+
+<h2>Troubleshooting</h2>
+
+<p>Errors may occur when launching the ros node <code>gpsd_client</code> . Simply try to relaunch it once or twice. When launched successfully, it runs well.</p>
+
+<p>If error persists, you can run <code>gpsmon</code> (from linux package <code>gpsd-clients</code>) to see if the data received by gpsd is OK.</p>
