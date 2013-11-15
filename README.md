@@ -77,6 +77,7 @@ Info is [here](https://github.com/AutonomyLab/ardrone_autonomy#ardrone_autonomy-
 		git clone -b fuerte_released https://github.com/ktossell/gps_umd.git
 		rosstack profile && rospack profile
 		rosws set gps_umd
+		#re-source your setup.bash
 		rosmake gps_umd
 
 - `ar_track_alvar` : <http://wiki.ros.org/ar_track_alvar>
