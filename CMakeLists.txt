@@ -32,5 +32,9 @@ rosbuild_add_executable(gps_remote_driver src/gps_remote_driver.cpp src/gps_conv
 
 rosbuild_add_executable(test_gps_connection_lib src/test_gps_connection_lib.cpp src/gps_conv.cpp src/GpsConnection.cpp)
 
+#tool to publish a path from odometry measures
+rosbuild_add_executable(odom_to_path src/odom_to_path.cpp)
+
+
 #target_link_libraries(example ${PROJECT_NAME})
 
