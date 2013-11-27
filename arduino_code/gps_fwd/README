@@ -7,7 +7,7 @@ Connect gps to following pins
 GPS       |    arduino
 -----------------------
 3DF       |  unplugged
-RXD       |  7
+RXD       |  3
 TXD       |  2
 1PPS      |  unplugged
 GND       |  GND

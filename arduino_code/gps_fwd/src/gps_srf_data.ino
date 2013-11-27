@@ -1,6 +1,5 @@
 #include <SoftwareSerial.h>
 
-#define SEND_BYTE_TO_BYTE
 #define CONTROL_CHECKSUM
 
 #define STR_LEN_MAX 100
@@ -8,7 +7,7 @@
 
 // GPS PINS
 #define SoftrxPin 2
-#define SofttxPin 7
+#define SofttxPin 3
 // SRF PINS
 #define ECHOPIN1 3                            // Pin to receive echo pulse
 #define TRIGPIN1 4                             // Pin to send trigger pulse
