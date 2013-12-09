@@ -1,0 +1,16 @@
+<package>
+  <description brief="tag_detector">
+
+     tag_detector
+
+  </description>
+  <author>clems</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/tag_detector</url>
+  <depend package="ar_pose"/>
+  <depend package="rospy"/>
+
+</package>
+
+

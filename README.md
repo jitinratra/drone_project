@@ -9,7 +9,7 @@ Installation
 #### Install ROS
 First you need to install ROS to use this SUMMARY
 project.
-The version we use is groovy. Just follow the instructions on the [webpage](http://wiki.ros.org/groovy/Installation) (tip: there is a link to download a virtual machine for virtualbox with ROS already installed)
+The version we use is fuerte. Just follow the instructions on the [webpage](http://wiki.ros.org/fuerte/Installation) (tip: there is a link to download a virtual machine for virtualbox with ROS already installed)
 If you choose to install on your own OS (not with virtualbox), just follow the instructions, and install the desktop-full version of ROS.
 
 You can take a look to some [tutorials](http://wiki.ros.org/ROS/Tutorials) to understand what is ROS and what it's made of.
@@ -77,6 +77,7 @@ Info is [here](https://github.com/AutonomyLab/ardrone_autonomy#ardrone_autonomy-
 		git clone -b fuerte_released https://github.com/ktossell/gps_umd.git
 		rosstack profile && rospack profile
 		rosws set gps_umd
+		#re-source your setup.bash
 		rosmake gps_umd
 
 - `ar_track_alvar` : <http://wiki.ros.org/ar_track_alvar>
