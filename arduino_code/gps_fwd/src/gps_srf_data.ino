@@ -59,9 +59,9 @@ void setup(){
 	gps.begin(9600);	// open gps SoftwareSerial port at 9600 bauds (default)
 	pinMode(SoftrxPin, INPUT);
 #ifdef GPS_10_HZ
-	gps.println("$PMTK251,115200*11"); //ask GPS to comunicate at 115200 bauds
+	gps.println("$PMTK251,38400*27"); //ask GPS to comunicate at 38.4 kbauds
 	delay(200);
-	gps.begin(115200); //change Software Serial baudrate after some time
+	gps.begin(38400); //change Software Serial baudrate after some time
 	gps.println("$PMTK226,3,30*4"); //ask gps to update at 10Hz
 #endif //GPS_10_HZ
 }
